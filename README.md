@@ -15,6 +15,7 @@ EVENT_REGISTRATION AND ATTENDANCE_TRACKER
 
                         CONTRIBUTION
    1. Agwaraonye Great chibuike 23/1114
+      
    created the tracker.php It contains forms for participant registration, event filtering, and attendance updates.
    It also displays a table  showing all registered participants and their attendance status, and i also updated
    the filter.php from some syntax errors and linked it to the tracker.php
