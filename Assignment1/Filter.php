@@ -15,6 +15,6 @@ return [
     'filter' => $filter,
     'participants' => $participants,
     'total' => $total,
-    'attended' => $attended
+    'attended' => $attended
 ];
 ?>
