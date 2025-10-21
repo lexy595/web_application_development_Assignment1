@@ -9,7 +9,7 @@ EVENT_REGISTRATION AND ATTENDANCE_TRACKER
 3. CHIMEZIE EMMANUEL
 4. ETERIGHO EMMANUEL
 5. FATOPE EMMANUEL || 23/1932 || emmanuelfatope1@gmail.com
-7. AGWARAONYE GREAT |23/1114|agwaraonyegreat@gmail.com| tracker.php, event__system.sql|
+7. AGWARAONYE GREAT |23/1114|agwaraonyegreat@gmail.com|lexy595| tracker.php, event__system.sql|
 8. OLUFEMI GAIUS | 23/0321 | olufemigaius@gmail.com | PHENOMENAL100
 9. AMADI GEORGE EMMANUEL
 
