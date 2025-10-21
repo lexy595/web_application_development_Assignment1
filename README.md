@@ -8,10 +8,10 @@ EVENT_REGISTRATION AND ATTENDANCE_TRACKER
 2. AFUWAPE EMMANUEL
 3. CHIMEZIE EMMANUEL
 4. ETERIGHO EMMANUEL
-5. FATOPE EMMANUEL
-6. AGWARAONYE GREAT |23/1114|agwaraonyegreat@gmail.com| tracker.php, event__system.sql|
-7. OLUFEMI GAIUS
-8. AMADI GEORGE EMMANUEL
+5. FATOPE EMMANUEL || 23/1932 || emmanuelfatope1@gmail.com
+7. AGWARAONYE GREAT |23/1114|agwaraonyegreat@gmail.com| tracker.php, event__system.sql|
+8. OLUFEMI GAIUS
+9. AMADI GEORGE EMMANUEL
 
                         CONTRIBUTION
    1. Agwaraonye Great chibuike 23/1114
