@@ -1,11 +1,10 @@
 <?php
 include 'db.php';
-include 'filter.php';
 
-// Get the current event filter from GET
+// Get filter
 $filter = $_GET['event'] ?? '';
 
-// Fetch participants
+// Fetch participants (filtered or all)
 if ($filter) {
     $stmt = $conn->prepare("SELECT * FROM participants WHERE event = ?");
     $stmt->bind_param("s", $filter);
@@ -16,7 +15,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $participants = $result->fetch_all(MYSQLI_ASSOC);
 
-// Count attended participants
+// Count totals
 $total = count($participants);
 $attended = count(array_filter($participants, fn($p) => $p['attended']));
 ?>
