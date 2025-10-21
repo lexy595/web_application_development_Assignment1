@@ -1,12 +1,32 @@
 <?php
-include 'filter.php';
+include 'db.php';
+include 'Filter.php';
+
+// Get the current event filter from GET
+$filter = $_GET['event'] ?? '';
+
+// Fetch participants
+if ($filter) {
+    $stmt = $conn->prepare("SELECT * FROM participants WHERE event = ?");
+    $stmt->bind_param("s", $filter);
+} else {
+    $stmt = $conn->prepare("SELECT * FROM participants");
+}
+$stmt->execute();
+$result = $stmt->get_result();
+$participants = $result->fetch_all(MYSQLI_ASSOC);
+
+// Count attended participants
+$total = count($participants);
+$attended = count(array_filter($participants, fn($p) => $p['attended']));
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Event Registration and Attendance Tracker</title>
-    
+
 </head>
 <body>
 
@@ -46,6 +66,7 @@ include 'filter.php';
             <th>Email</th>
             <th>Event</th>
             <th>Attended</th>
+            <th>Actions</th>
         </tr>
         <?php if ($participants): ?>
             <?php foreach ($participants as $i => $p): ?>
@@ -54,11 +75,16 @@ include 'filter.php';
                     <td><?= htmlspecialchars($p['name']) ?></td>
                     <td><?= htmlspecialchars($p['email']) ?></td>
                     <td><?= htmlspecialchars($p['event']) ?></td>
-                    <td><input type="checkbox" name="attendance[<?= $i ?>]" <?= $p['attended'] ? 'checked' : '' ?>></td>
+                    <td><input type="checkbox" name="attendance[<?= $p['id'] ?>]" <?= $p['attended'] ? 'checked' : '' ?>></td>
+                    <td>
+                        <a href="edit.php?id=<?= $p['id'] ?>">Edit</a> |
+                        <a href="delete.php?id=<?= $p['id'] ?>" onclick="return confirm('Are you sure?')">Delete</a> |
+                        <a href="print.php?event=<?= urlencode($p['event']) ?>" target="_blank">Print</a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
-            <tr><td colspan="5" style="text-align:center;">No participants found.</td></tr>
+            <tr><td colspan="6" style="text-align:center;">No participants found.</td></tr>
         <?php endif; ?>
     </table>
 
