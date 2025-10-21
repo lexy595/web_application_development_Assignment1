@@ -1,6 +1,6 @@
 <?php
 include 'db.php';
-include 'Filter.php';
+include 'filter.php';
 
 // Get the current event filter from GET
 $filter = $_GET['event'] ?? '';

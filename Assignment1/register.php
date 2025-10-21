@@ -11,7 +11,7 @@ if (isset($_POST['register'])) {
     $stmt->bind_param("sss", $name, $email, $event);
     $stmt->execute();
 
-    header("Location: index.php");
+    header("Location: tracker.php");
     exit;
 }
 
@@ -38,7 +38,7 @@ if (isset($_POST['update_attendance'])) {
     }
 
     // Redirect back to filtered view if applicable
-    $redirect = "index.php";
+    $redirect = "tracker.php";
     if ($eventFilter) $redirect .= '?event=' . urlencode($eventFilter);
     header("Location: $redirect");
     exit;

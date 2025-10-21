@@ -12,6 +12,6 @@ $stmt = $conn->prepare("DELETE FROM participants WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 
-header("Location: index.php"); // redirect back to main page
+header("Location: tracker.php"); // redirect back to main page
 exit;
 ?>

@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssi", $name, $email, $event, $id);
     $stmt->execute();
 
-    header("Location: index.php"); // redirect to main page
+    header("Location: tracker.php"); // redirect to main page
     exit;
 }
 ?>
