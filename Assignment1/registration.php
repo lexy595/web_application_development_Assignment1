@@ -1,9 +1,6 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['participants'])) {
-    $_SESSION['participants'] = [];
-}
+include 'db.php';
+include 'filter.php';
 
 // Handle new registration
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
@@ -12,12 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     $event = trim($_POST['event']);
 
     if ($name && $email && $event) {
-        $_SESSION['participants'][] = [
-            'name' => $name,
-            'email' => $email,
-            'event' => $event,
-            'attended' => false
-        ];
+        $stmt = $conn->prepare("INSERT INTO participants (name, email, event) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $name, $email, $event);
+        $stmt->execute();
+        $stmt->close();
     }
 
     header("Location: tracker.php");
@@ -26,12 +21,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 
 // Handle attendance update
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_attendance'])) {
-    $filter = isset($_GET['event']) ? $_GET['event'] : '';
-    foreach ($_SESSION['participants'] as $index => &$participant) {
-        $participant['attended'] = isset($_POST['attendance'][$index]);
+    $attendance = $_POST['attendance'] ?? [];
+
+    // Reset all to 0 first
+    $conn->query("UPDATE participants SET attended = 0");
+
+    // Then mark selected as attended
+    foreach ($attendance as $id => $val) {
+        $stmt = $conn->prepare("UPDATE participants SET attended = 1 WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
     }
-    unset($participant);
-    header("Location: tracker.php" . ($filter ? "?event=$filter" : ""));
+
+    // Redirect back with filter if any
+    $redirect = isset($_GET['event']) ? "tracker.php?event=" . urlencode($_GET['event']) : "tracker.php";
+    header("Location: $redirect");
     exit;
 }
 ?>
