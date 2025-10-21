@@ -2,7 +2,7 @@
 $host = "localhost";      // or 127.0.0.1
 $user = "root";           // your phpMyAdmin username
 $pass = "";               // your phpMyAdmin password (leave empty if none)
-$dbname = "event__tracker";  // your database name
+$dbname = "event__system";  // your database name
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
