@@ -6,12 +6,13 @@ EVENT_REGISTRATION AND ATTENDANCE_TRACKER
 
 1. AGBAROJI EMEKA  | 23/2102 | agbarojiemeka11@gmail.com  | Mekarr
 2. AFUWAPE EMMANUEL | 23/2288 | emmanuelafuwape704@gmail.com | EmmanuelAfuwape12
-3. CHIMEZIE EMMANUEL
-4. ETERIGHO EMMANUEL | 23/2245 | eeterigho18@gmail.com | Ruonaterry
-5. FATOPE EMMANUEL || 23/1932 || emmanuelfatope1@gmail.com
-6. AGWARAONYE GREAT |23/1114|agwaraonyegreat@gmail.com|lexy595| tracker.php, event__system.sql|
-7. OLUFEMI GAIUS | 23/0321 | olufemigaius@gmail.com | PHENOMENAL100
-8. AMADI GEORGE EMMANUEL|23/2532|gamadi543@gmail.com |Amadi5000 
+3. CHIMEZIE EMMANUEL |23/1547|
+   somtodaniel237@gmail.com|
+5. ETERIGHO EMMANUEL | 23/2245 | eeterigho18@gmail.com | Ruonaterry
+6. FATOPE EMMANUEL || 23/1932 || emmanuelfatope1@gmail.com
+7. AGWARAONYE GREAT |23/1114|agwaraonyegreat@gmail.com|lexy595| tracker.php, event__system.sql|
+8. OLUFEMI GAIUS | 23/0321 | olufemigaius@gmail.com | PHENOMENAL100
+9. AMADI GEORGE EMMANUEL|23/2532|gamadi543@gmail.com |Amadi5000 
 
                         CONTRIBUTION
    1. Agwaraonye Great chibuike 23/1114
