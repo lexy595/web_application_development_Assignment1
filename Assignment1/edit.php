@@ -37,19 +37,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Participant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Participant - Event Tracker</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material-icons" rel="stylesheet">
 </head>
 <body>
-<h2>Edit Participant</h2>
-<form method="POST">
-    <input type="text" name="name" value="<?= htmlspecialchars($participant['name']) ?>" required>
-    <input type="email" name="email" value="<?= htmlspecialchars($participant['email']) ?>" required>
-    <select name="event" required>
-        <option value="Tech Conference" <?= $participant['event'] === 'Tech Conference' ? 'selected' : '' ?>>Tech Conference</option>
-        <option value="Workshop" <?= $participant['event'] === 'Workshop' ? 'selected' : '' ?>>Workshop</option>
-        <option value="Seminar" <?= $participant['event'] === 'Seminar' ? 'selected' : '' ?>>Seminar</option>
-    </select>
-    <button type="submit">Update</button>
-</form>
+<header>
+    <div class="header-content">
+        <h1>Edit Participant</h1>
+        <a href="tracker.php" class="btn">
+            <i class="material-icons">arrow_back</i> Back to Dashboard
+        </a>
+    </div>
+</header>
+
+<main class="container">
+    <div class="form-container animate-fade-in">
+        <form method="POST" class="card">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" value="<?= htmlspecialchars($participant['name']) ?>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<?= htmlspecialchars($participant['email']) ?>" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="event">Event</label>
+                <select id="event" name="event" required>
+                    <option value="">Select Event</option>
+                    <option value="Tech Conference" <?= $participant['event'] === 'Tech Conference' ? 'selected' : '' ?>>Tech Conference</option>
+                    <option value="Workshop" <?= $participant['event'] === 'Workshop' ? 'selected' : '' ?>>Workshop</option>
+                    <option value="Seminar" <?= $participant['event'] === 'Seminar' ? 'selected' : '' ?>>Seminar</option>
+                </select>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn">
+                    <i class="material-icons">save</i> Update Participant
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; <?= date('Y') ?> Event Registration System. All rights reserved.</p>
+    </div>
+</footer>
 </body>
 </html>

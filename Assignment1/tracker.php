@@ -24,30 +24,76 @@ $attended = count(array_filter($participants, fn($p) => $p['attended']));
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Registration and Attendance Tracker</title>
-
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+<header>
+    <div class="header-content">
+        <h1>Event Registration System</h1>
+        <div class="header-actions">
+            <a href="print.php" class="btn btn-print no-print">
+                <i class="material-icons">print</i> Print List
+            </a>
+        </div>
+    </div>
+</header>
 
-<h2>Event Registration</h2>
-<form method="POST" action="registration.php">
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <select name="event" required>
-        <option value="">Select Event</option>
-        <option value="Tech Conference">Tech Conference</option>
-        <option value="Workshop">Workshop</option>
-        <option value="Seminar">Seminar</option>
-    </select>
-    <button type="submit" name="register">Register</button>
-</form>
+<main class="container">
+    <!-- Stats Cards -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <h3><?= $total ?></h3>
+            <p>Total Participants</p>
+        </div>
+        <div class="stat-card">
+            <h3><?= $attended ?></h3>
+            <p>Attended</p>
+        </div>
+        <div class="stat-card">
+            <h3><?= $total > 0 ? round(($attended / $total) * 100) : 0 ?>%</h3>
+            <p>Attendance Rate</p>
+        </div>
+    </div>
 
-<hr>
+    <!-- Registration Form -->
+    <section class="card">
+        <h2><i class="material-icons">person_add</i> Register New Participant</h2>
+        <form method="POST" action="registration.php" class="form-grid">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter email address" required>
+            </div>
+            <div class="form-group">
+                <label for="event">Event</label>
+                <select id="event" name="event" required>
+                    <option value="">Select an event</option>
+                    <option value="Tech Conference">Tech Conference</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Seminar">Seminar</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit" name="register" class="btn">
+                    <i class="material-icons">person_add</i> Register Participant
+                </button>
+            </div>
+        </form>
+    </section>
 
-<h2>Filter by Event</h2>
-<form method="GET" action="">
-    <select name="event">
-        <option value="">All Events</option>
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <h2><i class="material-icons">filter_list</i> Filter Participants</h2>
+        <form method="GET" action="" class="filter-form">
+            <div class="form-group" style="margin-bottom: 0;">
+                <select name="event" onchange="this.form.submit()">
+                    <option value="">All Events</option>
         <option value="Tech Conference" <?= $filter === 'Tech Conference' ? 'selected' : '' ?>>Tech Conference</option>
         <option value="Workshop" <?= $filter === 'Workshop' ? 'selected' : '' ?>>Workshop</option>
         <option value="Seminar" <?= $filter === 'Seminar' ? 'selected' : '' ?>>Seminar</option>
